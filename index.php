@@ -6,15 +6,38 @@ $result = mysqli_query($connect ,$sql);
 $tbody=''; //this variable will hold the body for the table
 if(mysqli_num_rows($result)  > 0) {     
     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){         
-        $tbody .= " <div class='container mb-5'><tr>
-            <td class='p-5'><img class='img-thumbnail' src='pictures/" .$row['picture']."'</td>
-            <td>" .$row['title']."</td>
-            <td>" .$row['isbn_number']."</td>
-            <td>" .$row['author_f_name'].$row['author_l_name']."</td>
-            <td>" .$row['publish_date']."</td>
-            <td><a href='update.php?id=" .$row['id']."'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
-            <a href='delete.php?id=" .$row['id']."'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
-            </tr></div>";
+        $tbody .= " 
+        <div class='container bg-light'>
+        <div class='row'>
+            <div class='col-3'>
+                <div class='text-center'>
+                    <img class='img-thumbnail width='100%' mt-3' src='pictures/" .$row['picture']."'>
+                </div>
+                <div class='m-4'>
+                    <p>ISBN: " .$row['isbn_number']." </p>
+                    <p>Type: " .$row['type_of']." </p>
+                    <p>Publish Date: " .$row['publish_date']."</p>
+                    <br>
+                    <a href='update.php?id=" .$row['id']."'><button class='btn btn-primary btn-sm ms-4 mt-4 mb-4'
+                    type='button'>Edit</button></a>
+                    <a href='delete.php?id=" .$row['id']."'><button class='btn btn-danger btn-sm ms-2 mt-4 mb-4'
+                    type='button'>Delete</button></a>
+                </div>
+            </div>
+            <div class='col-9'>
+                <div class='p-5'>
+                   <h4>Title: " .$row['title']." </h4>
+                    <h5 class='mt-3 mb-3'>Author: " .$row['author_f_name'] .$row['author_l_name']."</h5>
+                    <h4>Description: </h4>
+                    <p>" .$row['txt']."</p>
+                    <hr>
+                    <p>Publisher: " .$row['publisher_name']."</p>
+                    <p>Publisher Address: " .$row['publisher_address']."</p>
+                </div>
+
+            </div>
+        </div>
+    </div>";
     };
 } else {
     $tbody =  "<tr><td colspan='10'><center>No Data Available </center></td></tr>";
@@ -36,8 +59,9 @@ mysqli_close($connect);
                 margin: auto;
             }
             .img-thumbnail {
-                width: 70px !important;
+                width: 100px !important;
                 height: 100px !important;
+                margin-top: 50px;
             }
             td {          
                 text-align: left;
@@ -94,16 +118,6 @@ mysqli_close($connect);
             <h2 class="mt-3 mb-3">Find products in our store.</h2>
 
             <table class="table table-striped">
-                <thead class="table-danger">
-                    <tr>
-                        <th>Picture</th>
-                        <th>Title</th>
-                        <th>ISBN</th>
-                        <th>Author</th>
-                        <th>Publish Date</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <?= $tbody;?>
                 </tbody>

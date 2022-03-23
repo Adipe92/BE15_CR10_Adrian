@@ -80,12 +80,13 @@ if ($_GET['id']) {
             <table class="table w-75 mt-3">
                 <tr>
                     <td><?php echo $title?></td>
+                    <td><?php echo $isbn_number?></td>
                 </tr>
             </table>
 
             <h3 class="mb-4 mt-5">Do you really want to delete this product?</h3>
             <form action ="actions/a_delete.php" method="post">
-                <input type="hidden" name="isbn_number" value="<?php echo $isbn_number ?>" />
+                <input type="hidden" name="id" value="<?php echo $id ?>"/> 
                 <input type="hidden" name="picture" value="<?php echo $picture ?>" />
                 <button class="btn btn-danger" type="submit">Yes, delete it!</button>
                 <a href="index.php"><button class="btn btn-warning" type="button">No, go back!</button></a>

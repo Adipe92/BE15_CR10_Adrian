@@ -3,8 +3,8 @@ require_once 'db_connect.php';
 require_once 'file_upload.php';
 
 if ($_POST) {    
-    $name = $_POST['name'];
-    $price = $_POST['price'];
+    $title = $_POST['title'];
+    $isbn_number = $_POST['isbn_number'];
     $id = $_POST['id'];
     //variable for upload pictures errors is initialised
     $uploadError = '';
@@ -12,17 +12,17 @@ if ($_POST) {
     $picture = file_upload($_FILES['picture']);//file_upload() called  
     if($picture->error===0){
         ($_POST["picture"]=="product.png")?: unlink("../pictures/$_POST[picture]");           
-        $sql = "UPDATE products SET name = '$name', price = $price, picture = '$picture->fileName' WHERE id = {$id}";
+        $sql = "UPDATE products SET title = '$title', isbn_number = $isbn_number, picture = '$picture->fileName' WHERE id = {$id}";
     }else{
-        $sql = "UPDATE products SET name = '$name', price = $price WHERE id = {$id}";
+        $sql = "UPDATE products SET title = '$title', isbn_number = $isbn_number WHERE id = {$id}";
     }    
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";
-        $message = "The record was successfully updated";
+        $message = "All informations are updated!";
         $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'';
     } else {
         $class = "danger";
-        $message = "Error while updating record : <br>" . mysqli_connect_error();
+        $message = "Error With updating datas : <br>" . mysqli_connect_error();
         $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'';
     }
     mysqli_close($connect);    

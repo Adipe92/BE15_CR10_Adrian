@@ -43,7 +43,7 @@ if ($_GET['id']) {
         <div class="header-text">
       <h1 class="title mb-3">Web Library</h1>
       <p>Welcome to our Library!</p>
-      <a href= "create.php" class="btn btn-danger" role="button" data-bs-toggle="button">Edit Product</a>
+      <a href= "create.php" class="btn btn-danger" role="button" data-bs-toggle="button">Add Product</a>
 
     </div>
   </div>
@@ -75,16 +75,16 @@ if ($_GET['id']) {
   </div>
 </nav>
         <fieldset>
-            <legend class='h2 mb-5'>Update request <img class='ms-5 img-thumbnail rounded-circle' src='pictures/<?php echo $picture ?>' alt="<?php echo $name ?>"></legend>
+            <legend class='h2 mb-5'>Update request <img class='ms-5 img-thumbnail rounded-circle' src='pictures/<?php echo $picture ?>' alt="<?php echo $title ?>"></legend>
             <form action="actions/a_update.php"  method="post" enctype="multipart/form-data">
                 <table class="table">
                     <tr>
-                        <th>Name</th>
-                        <td><input class="form-control" type="text"  name="name" placeholder ="Product Name" value="<?php echo $title ?>"  /></td>
+                        <th>Title</th>
+                        <td><input class="form-control" type="text"  name="title" placeholder ="Product Name" value="<?php echo $title ?>"  /></td>
                     </tr>
                     <tr>
                         <th>ISBN</th>
-                        <td><input class="form-control" type= "number" name="price" step="any"  placeholder="ISBN" value ="<?php echo $isbn_number ?>" /></td>
+                        <td><input class="form-control" type= "number" name="isbn_number" step="any"  placeholder="ISBN" value ="<?php echo $isbn_number ?>" /></td>
                     </tr>
                     <tr>
                         <th>Picture</th>

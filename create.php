@@ -71,8 +71,24 @@
                         <td class="w-50"><input class='form-control' type="text" name= "author_l_name" placeholder="Last Name" /></td>
                     </tr>
                     <tr>
+                      <th>Type</th>
+                    <td><select class="form-select" name='type_of' aria-label="Default select example">
+                        <option value="CD">CD</option>
+                        <option value="Book">Book</option>
+                        <option value="DVD">DVD</option>
+                    </select></td>
+                    </tr>
+                    <th>Description</th>
+                    <td>
+                    <textarea class="form-control" name="txt" id="exampleFormControlTextarea1" placeholder="About product" rows="3"></textarea>
+                    </td>
+                    <tr>
                         <th>Publisher</th>
                         <td><input class='form-control' type="text" name="publisher_name"  placeholder="First Name, Last Name" /></td>
+                    </tr> 
+                    <tr>
+                        <th>Publisher Address</th>
+                        <td><input class='form-control' type="text" name="publisher_address"  placeholder="Street ZIP City" /></td>
                     </tr>  
                     <tr>
                         <th>Publish Date</th>

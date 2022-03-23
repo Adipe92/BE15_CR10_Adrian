@@ -7,13 +7,16 @@ if ($_POST) {
     $isbn_number = $_POST['isbn_number'];
     $author_f_name = $_POST['author_f_name'];
     $author_l_name = $_POST['author_l_name'];
+    $type_of = $_POST['type_of'];
+    $txt = $_POST['txt'];
     $publisher_name = $_POST['publisher_name'];
+    $publisher_address = $_POST['publisher_address'];
     $publish_date = $_POST['publish_date'];
     $uploadError = '';
     //this function exists in the service file upload.
     $picture = file_upload($_FILES['picture']);  
    
-    $sql = "INSERT INTO products (title, isbn_number, author_f_name, author_l_name, publisher_name, publish_date, picture) VALUES ('$title', $isbn_number, '$author_f_name', '$author_l_name', '$publisher_name', $publish_date,'$picture->fileName')";
+    $sql = "INSERT INTO products (title, isbn_number, author_f_name, author_l_name, type_of, txt, publisher_name, publisher_address, publish_date, picture) VALUES ('$title', $isbn_number, '$author_f_name', '$author_l_name', '$type_of', '$txt', '$publisher_name', '$publisher_address', '$publish_date','$picture->fileName')";
 
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";
